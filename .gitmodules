@@ -1,0 +1,6 @@
+[submodule "mwp"]
+	path = mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team1/mwp"]
+	path = msmba-workflow-winter2016-team1/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
