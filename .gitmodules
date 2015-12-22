@@ -4,3 +4,24 @@
 [submodule "msmba-workflow-winter2016-team2/mwp"]
 	path = msmba-workflow-winter2016-team2/mwp
 	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team3/mwp"]
+	path = msmba-workflow-winter2016-team3/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team4/mwp"]
+	path = msmba-workflow-winter2016-team4/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team5/mwp"]
+	path = msmba-workflow-winter2016-team5/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team6/mwp"]
+	path = msmba-workflow-winter2016-team6/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team7/mwp"]
+	path = msmba-workflow-winter2016-team7/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team8/mwp"]
+	path = msmba-workflow-winter2016-team8/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
+[submodule "msmba-workflow-winter2016-team9/mwp"]
+	path = msmba-workflow-winter2016-team9/mwp
+	url = https://github.com/MSMBA/msmba-workflow.git
