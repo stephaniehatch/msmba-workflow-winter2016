@@ -51,7 +51,7 @@ class CoffeeBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = self.drink_order_taken("OrderTaker", "OrderTaken", self.method_name) 
+            task = self.drink_order_taken("OrderTaker", "OrderTaken") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
