@@ -69,10 +69,13 @@ class AirportBackend(Backend):
         #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
         #as insipiration...
         for result in results:  # repeat the following actions for each result
-            self.workflow.update_status(result, Status.COMPLETE)
-            task = Task.construct_from_result(result,"TSA", "frisk") 
-            self.workflow.add(task) # add the new task to the workflow
-            self.workflow.update_status(result, Status.COMPLETE)
+            if result.data['IDfit?'] == 1:
+                task = Task.construct_from_result(result, "printer", "givetix")
+            else:
+                task = Task.construct_from_result(result, "TSA", "frisk")
+            self.workflow.add(task)
+            self.workflow.update_status(result, Status.COMPLETE) 
+
 
     def frisk_customer_frantically(self, results):
         '''
