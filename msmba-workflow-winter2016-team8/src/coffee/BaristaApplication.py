@@ -31,7 +31,7 @@ class BaristaApplication(RoleApplication):
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
-        self.register_sink_step("PrepareDrink", self.prepare_drink_form_creator, name_fields=["sequence", "Drank", "SpecialRequest"])
+        self.register_sink_step("PrepareDrink", self.prepare_drink_form_creator, name_fields=["sequence", "Drank"])
 
 
     def prepare_drink_form_creator(self, stepname, form):
