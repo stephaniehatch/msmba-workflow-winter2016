@@ -23,7 +23,7 @@ class DeskApplication(RoleApplication):
         '''
         # Declare this application to be part of a given workflow, and responsible for a given role:
         # !!! Modify the following to use the actual role name you need...
-        super(BaristaApplication, self).__init__(theflowname, "Barista") 
+        super(CheckerApplication, self).__init__(theflowname, "Barista") 
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
