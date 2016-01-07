@@ -6,7 +6,7 @@ sees and tell WMP how this application (user interface) fits into the overall wo
 
 Note:  the comments here assume you have already read through the comments
 in CoffeeBackend.py and OrderTakerApplication.py and made your edits there.
-Stephanie was here so was John
+Stephanie was here so was John and also Andrew :3
 '''
 
 from frontend.roleApplication import RoleApplication
