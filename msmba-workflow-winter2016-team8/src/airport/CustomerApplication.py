@@ -40,14 +40,15 @@ class OrderTakerApplication(RoleApplication):
         This method does the actual work of building the user interface.
         '''
         # !!! improve this text...
-        form.add_static_label('What can I get you sonny?:')
+        form.add_static_label('May I please have your ID?: ')
         form.add_field(Type.SHORTSTRING, "Name") 
-        form.add_field(Type.SHORTSTRING, "Drank")
-        form.add_field(Type.SHORTSTRING, "SpecialRequest")
+        form.add_field(Type.SHORTSTRING, "Date of Birth ")
+        form.add_field(Type.SHORTSTRING, "ID Number ")
+        form.add_field(Type.SHORTSTRING, "Flight Number")
         # !!! Add at least two fields here, along with any additional static labels you need...
 
 if __name__ == '__main__':
     #starts up the OrderTakerApplication:
-    app = OrderTakerApplication()
+    app = Customerlication()
     #Start interacting with the user:
     app.MainLoop()
