@@ -1,19 +1,14 @@
 '''
-The Barista User Interface for the coffee bar workflow (Winter Intensives Lab 5)
-
+The Airport Check-in Desk Interface for the airport workflow
 This is where you define the fields that appear on the screen (application) the barista
 sees and tell WMP how this application (user interface) fits into the overall workflow.
-
-Note:  the comments here assume you have already read through the comments
-in CoffeeBackend.py and OrderTakerApplication.py and made your edits there.
-Stephanie was here so was John. Xiao loves green Tea!
 '''
 
 from frontend.roleApplication import RoleApplication
 from frontend.form import Type
 from airport.AirportConstants import theflowname
 
-class BaristaApplication(RoleApplication):
+class DeskApplication(RoleApplication):
     '''
     The BaristaApplication "class" is a collection of the "methods" (functions) that 
     define the elements of the order taker application.  
@@ -28,7 +23,7 @@ class BaristaApplication(RoleApplication):
         '''
         # Declare this application to be part of a given workflow, and responsible for a given role:
         # !!! Modify the following to use the actual role name you need...
-        super(BaristaApplication, self).__init__(theflowname, "Barista") 
+        super(CheckerApplication, self).__init__(theflowname, "Barista") 
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
