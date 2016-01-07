@@ -33,14 +33,17 @@ class OrderTakerApplication(RoleApplication):
         super(OrderTakerApplication, self).__init__(theflowname, "OrderTaker") 
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual name for this task...
-        self.register_source_step("OrderTaken", self.take_drink_order_form_creator) 
+        self.register_source_step("TakeOrder", self.take_drink_order_form_creator) 
 
     def take_drink_order_form_creator(self, stepname, form):
         '''
         This method does the actual work of building the user interface.
         '''
         # !!! improve this text...
-        form.add_static_label('You are supposed to do something here, I think:') 
+        form.add_static_label('What can I get you sonny?:')
+        form.add_field(Type.SHORTSTRING, "Name") 
+        form.add_field(Type.SHORTSTRING, "Drank")
+        form.add_field(Type.SHORTSTRING, "SpecialRequest")
         # !!! Add at least two fields here, along with any additional static labels you need...
 
 if __name__ == '__main__':
