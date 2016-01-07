@@ -18,7 +18,7 @@ class CheckerApplication(RoleApplication):
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
-        self.register_sink_step("checkID", self.checks_information, name_fields=["insertfield1", "insertfield2"])
+        self.register_sink_step("checkID", self.checks_information, name_fields=["sequence", "Name", "ID"])
 
 
     def checks_information(self, stepname, form):
