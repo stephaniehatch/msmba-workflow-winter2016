@@ -39,8 +39,8 @@ class CoffeeBackend(Backend):
                self.method_name refers to a method in this class which should respond to
                                 the task being completed.
         '''
-        # !!! add a line of code here to register the step where a drink order is taken.
-        # !!! add a line of code here to register the step where a drink is prepared.
+        self.register_result_listener("OrderTaker", "TakeOrder", self.drink_order_taken)
+        self.register_result_listener("Barista", "PrepareDrink", self.drink_prepared)
 
     def drink_order_taken(self, results):
         '''
@@ -51,7 +51,7 @@ class CoffeeBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = 'you need to replace this text in quotes with the right code ' 
+            task = Task.construct_from_result(result,"Barista", "PrepareDrink") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
@@ -64,7 +64,8 @@ class CoffeeBackend(Backend):
         '''
         #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
         #as insipiration...
-        pass
+        for result in results:  # repeat the following actions for each result
+            self.workflow.update_status(result, Status.COMPLETE)
 
 '''
 Finally, this last bit of code is fine as it is and you do not need to change it.

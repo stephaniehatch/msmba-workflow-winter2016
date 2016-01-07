@@ -10,7 +10,7 @@ from backend.backend import Backend
 from workflow.task import Task
 from workflow.result import Result 
 from workflow.flowData import Status
-from CoffeeConstants import theflowname
+from airport.AirportConstants import theflowname
 
 class CoffeeBackend(Backend):
     '''
@@ -39,10 +39,8 @@ class CoffeeBackend(Backend):
                self.method_name refers to a method in this class which should respond to
                                 the task being completed.
         '''
-        # !!! add a line of code here to register the step where a drink order is taken.
-        self.register_result_listener("OrderTaker", "OrderTaken", self.drink_order_taken)
-        # !!! add a line of code here to register the step where a drink is prepared.
-        self.register_result_listener("Barista", "DrinkPrepared", self.drink_prepared)
+        self.register_result_listener("OrderTaker", "TakeOrder", self.drink_order_taken)
+        self.register_result_listener("Barista", "PrepareDrink", self.drink_prepared)
 
     def drink_order_taken(self, results):
         '''
@@ -52,8 +50,8 @@ class CoffeeBackend(Backend):
         and assigns the preparation of this drink to the Barista.
         '''
         for result in results:  # repeat the following actions for each result
-            # !!! Fix the line below... 
-            task = Task.construct_from_result(result, "Barista", "DrinkPrepared");
+            # !!! Fix the line below...
+            task = Task.construct_from_result(result,"Barista", "PrepareDrink") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
@@ -65,8 +63,8 @@ class CoffeeBackend(Backend):
         the status of the barista's task (stored in the results variable) as Complete.  
         '''
         #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
+        #as insipiration...
         for result in results:  # repeat the following actions for each result
-            # !!! Fix the line below... 
             self.workflow.update_status(result, Status.COMPLETE)
 
 '''

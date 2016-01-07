@@ -13,7 +13,7 @@ in CoffeeBackend.py and made your edits there.
 # use in this file.
 from frontend.roleApplication import RoleApplication
 from frontend.form import Type
-from CoffeeConstants import theflowname
+from airport.AirportConstants import theflowname
 
 class OrderTakerApplication(RoleApplication):
     '''

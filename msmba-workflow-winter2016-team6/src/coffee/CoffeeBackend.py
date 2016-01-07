@@ -1,6 +1,6 @@
 '''
 Back end for the coffee bar workflow (Winter Intensives Lab 5)
-
+  
 This file is where you "wire" together the steps in the process.
 '''
 
@@ -32,15 +32,19 @@ class CoffeeBackend(Backend):
         '''
         The wire method is where we tell MWP which tasks to keep track of.
         To register a task, you will need to add a line of code that looks
-        like this:
+        like this: 
         self.register_result_listener("RoleName", "TaskName", self.method_name)
         Where: RoleName is the person who did the task
                TaskName is the name of the task they did
                self.method_name refers to a method in this class which should respond to
                                 the task being completed.
         '''
+        self.register_result_listener("OrderTaker", "TakeOrder", self.drink_order_taken)
+        self.register_result_listener("Barista", "MakeDrink", self.drink_prepared)
+
         # !!! add a line of code here to register the step where a drink order is taken.
         # !!! add a line of code here to register the step where a drink is prepared.
+
 
     def drink_order_taken(self, results):
         '''
@@ -51,21 +55,22 @@ class CoffeeBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = 'you need to replace this text in quotes with the right code ' 
+            task = Task.construct_from_result(result, "Barista", "MakeDrink")
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
-
+ 
     def drink_prepared(self, results):
         '''
-        This method is called after the barista has prepared the drink.  
+        This method is called after  the barista has prepared the drink.  
         In our very simple workflow this is the last step in the process, 
         which means that this method has a very simple job:  it just needs to mark 
-        the status of the barista's task (stored in the results variable) as Complete.  
-        '''
+        the status of the barista's task (stored in the results variable) as Complete.    
+        ''' 
         #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
-        #as insipiration...
-        pass
-
+        #as inspiration... 
+        for result in results:  # repeat the following actions for each result
+            # !!! Fix the line below...
+            self.workflow.update_status(result, Status.COMPLETE)
 '''
 Finally, this last bit of code is fine as it is and you do not need to change it.
 It initialize the backend by running the __init__ method

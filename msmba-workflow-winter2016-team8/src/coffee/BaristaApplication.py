@@ -6,6 +6,7 @@ sees and tell WMP how this application (user interface) fits into the overall wo
 
 Note:  the comments here assume you have already read through the comments
 in CoffeeBackend.py and OrderTakerApplication.py and made your edits there.
+Stephanie was here so was John. Xiao loves green Tea!
 '''
 
 from frontend.roleApplication import RoleApplication
@@ -27,11 +28,11 @@ class BaristaApplication(RoleApplication):
         '''
         # Declare this application to be part of a given workflow, and responsible for a given role:
         # !!! Modify the following to use the actual role name you need...
-        super(BaristaApplication, self).__init__(theflowname, "RoleName") 
+        super(BaristaApplication, self).__init__(theflowname, "Barista") 
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
-        self.register_sink_step("TaskName", self.prepare_drink_form_creator, name_fields=["sequence", "FieldName1", "FieldName2"])
+        self.register_sink_step("PrepareDrink", self.prepare_drink_form_creator, name_fields=["sequence", "Drank"])
 
 
     def prepare_drink_form_creator(self, stepname, form):
@@ -40,7 +41,7 @@ class BaristaApplication(RoleApplication):
         This form appears once the barista selects one of the pending orders from a list.
         '''
         # !!! Use one or more fields from order to define label...
-        form.add_task_label(fields=["FieldName1","FieldName2"]) 
+        form.add_task_label(fields=["Name"]) 
         # !!! Add any static labels or fields you want to include in this form...
 
 if __name__ == '__main__':

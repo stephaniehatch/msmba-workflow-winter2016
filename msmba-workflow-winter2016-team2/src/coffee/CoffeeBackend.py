@@ -29,6 +29,8 @@ class CoffeeBackend(Backend):
         Backend.__init__(self, theflowname)  
 
     def wire(self):
+        self.register_result_listener("OrderTaker", "TakeOrder", self.drink_order_taken)
+        self.register_result_listener("Barista", "PrepareDrink", self.drink_prepared)
         '''
         The wire method is where we tell MWP which tasks to keep track of.
         To register a task, you will need to add a line of code that looks
@@ -51,7 +53,7 @@ class CoffeeBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = 'you need to replace this text in quotes with the right code ' 
+            task = Task.construct_from_result(result,"Barista","PrepareDrink")
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
@@ -64,7 +66,9 @@ class CoffeeBackend(Backend):
         '''
         #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
         #as insipiration...
-        pass
+        for result in results:  # repeat the following actions for each result
+            # !!! Fix the line below...
+            self.workflow.update_status(result, Status.COMPLETE)
 
 '''
 Finally, this last bit of code is fine as it is and you do not need to change it.
