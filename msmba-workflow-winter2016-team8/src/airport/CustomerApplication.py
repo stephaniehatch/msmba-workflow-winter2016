@@ -17,7 +17,7 @@ from airport.AirportConstants import theflowname
 
 class CustomerApplication(RoleApplication):
     '''
-    The OrderTakerApplication "class" is a collection of the "methods" (functions) that 
+    The CustomerApplication "class" is a collection of the "methods" (functions) that 
     define the elements of the order taker application.  
     
     An application will always include the method __init__ and at least one
@@ -45,6 +45,7 @@ class CustomerApplication(RoleApplication):
         form.add_field(Type.SHORTSTRING, "Date of Birth ")
         form.add_field(Type.SHORTSTRING, "ID Number ")
         form.add_field(Type.SHORTSTRING, "Flight Number")
+        form.add_field(Type.CHOICE, "Flight Treatment", choices=['Was rude at desk, deny them treats','Smiled during checkin, give first-class bathroom privileges',]
         # !!! Add at least two fields here, along with any additional static labels you need...
 
 if __name__ == '__main__':
