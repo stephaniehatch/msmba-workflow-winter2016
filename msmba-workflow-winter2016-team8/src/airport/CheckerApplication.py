@@ -12,13 +12,12 @@ class CheckerApplication(RoleApplication):
 
     def __init__(self):
         super(CheckerApplication, self).__init__(theflowname, "Checker");
-        # self.register_transition_step("Examine", self.examine_form_creator, name_fields=["sequence", "FirstName", "LastName", "Birthday"]);
         self.register_transition_step("checkID", self.does_ID_fit_form_creator, name_fields=["sequence"])
 
 
     def does_ID_fit_form_creator(self, stepname, form):
         # form.add_task_label(fields=["Name", "ID"]);
-        form.add_field(Type.BOOLEAN, "IDfit?");
+        form.add_field(Type.BOOLEAN, "IDfit");
   
   
 

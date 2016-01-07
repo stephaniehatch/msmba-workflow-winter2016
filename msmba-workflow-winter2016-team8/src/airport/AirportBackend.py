@@ -38,8 +38,9 @@ class AirportBackend(Backend):
         '''
         self.register_result_listener("desk", "enterID", self.enter_information)
         self.register_result_listener("checker", "checkID", self.checks_information)
-        self.register_result_listener("TSA", "frisk", self.frisk_customer_frantically)
-        self.register_result_listener("printer", "givetix", self.return_tix)
+        self.register_joined_listener("IDfit", self.TSA_predicate, self.frisk_customer_frantically)
+        #self.register_result_listener("TSA", "frisk", self.frisk_customer_frantically)
+        #self.register_result_listener("printer", "givetix", self.return_tix)
 
 
 
@@ -53,13 +54,15 @@ class AirportBackend(Backend):
     def checks_information(self, results):
 
         for result in results:  # repeat the following actions for each result
-            if result.data['IDfit?'] == 1 :
+            if result.data['IDfit'] == 1 :
                 task = Task.construct_from_result(result, "printer", "givetix")
             else:
                 task = Task.construct_from_result(result, "TSA", "frisk")
             self.workflow.add(task)
             self.workflow.update_status(result, Status.COMPLETE) 
-
+            
+    def TSA_predicate(self, results):
+        return results == 1
 
     def frisk_customer_frantically(self, results):
 
