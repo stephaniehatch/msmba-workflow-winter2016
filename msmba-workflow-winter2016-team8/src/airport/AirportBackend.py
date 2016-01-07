@@ -60,14 +60,7 @@ class AirportBackend(Backend):
             self.workflow.update_status(result, Status.COMPLETE)
 
     def checks_information(self, results):
-        '''
-        This method is called after the barista has prepared the drink.  
-        In our very simple workflow this is the last step in the process, 
-        which means that this method has a very simple job:  it just needs to mark 
-        the status of the barista's task (stored in the results variable) as Complete.  
-        '''
-        #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
-        #as insipiration...
+
         for result in results:  # repeat the following actions for each result
             if result.data['IDfit?'] == 1:
                 task = Task.construct_from_result(result, "printer", "givetix")
@@ -78,14 +71,7 @@ class AirportBackend(Backend):
 
 
     def frisk_customer_frantically(self, results):
-        '''
-        This method is called after the barista has prepared the drink.  
-        In our very simple workflow this is the last step in the process, 
-        which means that this method has a very simple job:  it just needs to mark 
-        the status of the barista's task (stored in the results variable) as Complete.  
-        '''
-        #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
-        #as insipiration...
+
         for result in results:  # repeat the following actions for each result
             self.workflow.update_status(result, Status.COMPLETE)
             task = Task.construct_from_result(result,"printer", "givetix") 
@@ -93,14 +79,7 @@ class AirportBackend(Backend):
             self.workflow.update_status(result, Status.COMPLETE)
             
     def return_tix(self, results):
-        '''
-        This method is called after the barista has prepared the drink.  
-        In our very simple workflow this is the last step in the process, 
-        which means that this method has a very simple job:  it just needs to mark 
-        the status of the barista's task (stored in the results variable) as Complete.  
-        '''
-        #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
-        #as insipiration...
+
         for result in results:  # repeat the following actions for each result
             self.workflow.update_status(result, Status.COMPLETE)
 
