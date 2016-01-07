@@ -55,7 +55,7 @@ class AirportBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = Task.construct_from_result(result,"desk", "enterID") 
+            task = Task.construct_from_result(result,"checker", "checkID") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
@@ -70,7 +70,7 @@ class AirportBackend(Backend):
         #as insipiration...
         for result in results:  # repeat the following actions for each result
             self.workflow.update_status(result, Status.COMPLETE)
-            task = Task.construct_from_result(result,"checker", "checkID") 
+            task = Task.construct_from_result(result,"TSA", "frisk") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
@@ -85,7 +85,10 @@ class AirportBackend(Backend):
         #as insipiration...
         for result in results:  # repeat the following actions for each result
             self.workflow.update_status(result, Status.COMPLETE)
-
+            task = Task.construct_from_result(result,"printer", "givetix") 
+            self.workflow.add(task) # add the new task to the workflow
+            self.workflow.update_status(result, Status.COMPLETE)
+            
     def return_tix(self, results):
         '''
         This method is called after the barista has prepared the drink.  
