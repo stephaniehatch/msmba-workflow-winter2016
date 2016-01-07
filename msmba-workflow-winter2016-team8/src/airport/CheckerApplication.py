@@ -13,7 +13,7 @@ class CheckerApplication(RoleApplication):
     def __init__(self):
         super(CheckerApplication, self).__init__(theflowname, "Checker");
         # self.register_transition_step("Examine", self.examine_form_creator, name_fields=["sequence", "FirstName", "LastName", "Birthday"]);
-        self.register_transition_step("IDfit?", self.does_ID_fit_form_creator, name_fields=["sequence", "Name", "ID"]
+        self.register_transition_step("IDfit?", self.does_ID_fit_form_creator, name_fields=["sequence", "Name", "ID"])
 
 
     def does_ID_fit_form_creator(self, stepname, form):
