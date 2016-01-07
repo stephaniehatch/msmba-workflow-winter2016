@@ -53,7 +53,7 @@ class AirportBackend(Backend):
     def checks_information(self, results):
 
         for result in results:  # repeat the following actions for each result
-            if result.data['IDfit?'] == True :
+            if result.data['IDfit?'] == 1 :
                 task = Task.construct_from_result(result, "printer", "givetix")
             else:
                 task = Task.construct_from_result(result, "TSA", "frisk")
@@ -64,9 +64,6 @@ class AirportBackend(Backend):
     def frisk_customer_frantically(self, results):
 
         for result in results:  # repeat the following actions for each result
-            self.workflow.update_status(result, Status.COMPLETE)
-            task = Task.construct_from_result(result,"printer", "givetix") 
-            self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
             
     def return_tix(self, results):
