@@ -33,7 +33,7 @@ class CustomerApplication(RoleApplication):
         super(CustomerApplication, self).__init__(theflowname, "desk") 
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual name for this task...
-        self.register_source_step("Enter ID", self.enter_information) 
+        self.register_source_step("enterID", self.enter_information) 
 
     def enter_information(self, stepname, form):
         '''
