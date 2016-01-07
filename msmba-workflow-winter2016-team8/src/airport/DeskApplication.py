@@ -11,7 +11,7 @@ Stephanie was here so was John. Xiao loves green Tea!
 
 from frontend.roleApplication import RoleApplication
 from frontend.form import Type
-from CoffeeConstants import theflowname
+from airport.AirportConstants import theflowname
 
 class BaristaApplication(RoleApplication):
     '''
