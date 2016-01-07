@@ -45,9 +45,9 @@ class CustomerApplication(RoleApplication):
         form.add_field(Type.SHORTSTRING, "Date of Birth ")
         form.add_field(Type.SHORTSTRING, "ID Number ")
         form.add_field(Type.SHORTSTRING, "Flight Number")
-        form.add_field(Type.CHOICE, "Flight Treatment", choices=['Was rude at desk, deny them treats','Smiled during checkin, give first-class bathroom privileges',]
+        form.add_field(Type.CHOICE, "Flight Treatment", choices=['Was rude at desk, deny them treats','Smiled during checkin, give first-class bathroom privileges',])
         # !!! Add at least two fields here, along with any additional static labels you need...
-
+# THERE WAS A PARENTHESES MISSING
 if __name__ == '__main__':
     #starts up the OrderTakerApplication:
     app = CustomerApplication()
