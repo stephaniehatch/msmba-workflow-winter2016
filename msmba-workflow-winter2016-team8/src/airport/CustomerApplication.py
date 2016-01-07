@@ -49,6 +49,6 @@ class OrderTakerApplication(RoleApplication):
 
 if __name__ == '__main__':
     #starts up the OrderTakerApplication:
-    app = Customerlication()
+    app = OrderTakerApplication()
     #Start interacting with the user:
     app.MainLoop()
