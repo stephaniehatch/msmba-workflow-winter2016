@@ -53,7 +53,7 @@ class AirportBackend(Backend):
     def checks_information(self, results):
 
         for result in results:  # repeat the following actions for each result
-            if result.data['IDfit?'] == 1:
+            if result.data['IDfit?'] == True :
                 task = Task.construct_from_result(result, "printer", "givetix")
             else:
                 task = Task.construct_from_result(result, "TSA", "frisk")
