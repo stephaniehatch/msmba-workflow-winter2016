@@ -40,9 +40,9 @@ class TSAApplication(RoleApplication):
         This method does the actual work of building the user interface.
         '''
         # !!! improve this text...
-        form.add_static_label('Individual presented with:')
         form.add_field(Type.SHORTSTRING, "Suspect Name")
         form.add_field(Type.CHOICE, "Type of Inspection Required", choices=['Full Cavity Search','Breathalyzer','Light Petting','Rhino Tranquilizer','Disarming','I just wanted to talk to them, their pretty.'])
+        form.add_static_label('Individual presented with:')
         form.add_field(Type.BOOLEAN, "Intoxication") 
         form.add_field(Type.BOOLEAN, "Terroristic Thoughts")
         form.add_field(Type.BOOLEAN, "OLD")
