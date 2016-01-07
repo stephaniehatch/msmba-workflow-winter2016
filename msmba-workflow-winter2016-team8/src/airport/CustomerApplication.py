@@ -15,9 +15,9 @@ from frontend.roleApplication import RoleApplication
 from frontend.form import Type
 from airport.AirportConstants import theflowname
 
-class OrderTakerApplication(RoleApplication):
+class CustomerApplication(RoleApplication):
     '''
-    The OrderTakerApplication "class" is a collection of the "methods" (functions) that 
+    The CustomerApplication "class" is a collection of the "methods" (functions) that 
     define the elements of the order taker application.  
     
     An application will always include the method __init__ and at least one
@@ -30,12 +30,12 @@ class OrderTakerApplication(RoleApplication):
         '''
         # Declare this application to be part of a given workflow, and responsible for a given role:
         # !!! Modify the following to use the actual role name you need...
-        super(OrderTakerApplication, self).__init__(theflowname, "OrderTaker") 
+        super(CustomerApplication, self).__init__(theflowname, "desk") 
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual name for this task...
-        self.register_source_step("TakeOrder", self.take_drink_order_form_creator) 
+        self.register_source_step("enterID", self.enter_information) 
 
-    def take_drink_order_form_creator(self, stepname, form):
+    def enter_information(self, stepname, form):
         '''
         This method does the actual work of building the user interface.
         '''
@@ -50,6 +50,6 @@ class OrderTakerApplication(RoleApplication):
 
 if __name__ == '__main__':
     #starts up the OrderTakerApplication:
-    app = OrderTakerApplication()
+    app = CustomerApplication()
     #Start interacting with the user:
     app.MainLoop()
