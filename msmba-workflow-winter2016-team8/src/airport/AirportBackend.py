@@ -1,5 +1,5 @@
 '''
-Back end for the coffee bar workflow (Winter Intensives Lab 5)
+Back end for the airport workflow, a thing of beauty made by team 8.
 
 This file is where you "wire" together the steps in the process.
 '''
@@ -12,9 +12,9 @@ from workflow.result import Result
 from workflow.flowData import Status
 from airport.AirportConstants import theflowname
 
-class CoffeeBackend(Backend):
+class AirportBackend(Backend):
     '''
-    The CoffeeBackend "class" is a collection of the "methods" (functions) that do the actual
+    The AirportBackend "class" is a collection of the "methods" (functions) that do the actual
     wiring together of the steps in the coffee bar process.
     
     A back end will always include the methods __init__ and wire and will also include a method
@@ -39,10 +39,14 @@ class CoffeeBackend(Backend):
                self.method_name refers to a method in this class which should respond to
                                 the task being completed.
         '''
-        self.register_result_listener("OrderTaker", "TakeOrder", self.drink_order_taken)
-        self.register_result_listener("Barista", "PrepareDrink", self.drink_prepared)
+        self.register_result_listener("desk", "enterID", self.enter_information)
+        self.register_result_listener("checker", "checkID", self.checks_information)
+        self.register_result_listener("TSA", "frisk", self.frisk_body)
+        self.register_result_listener("printer", "givetix", self.return_tix)
 
-    def drink_order_taken(self, results):
+
+
+    def enter_information(self, results):
         '''
         This method (i.e. function) gets called to update data and schedule any tasks
         necessary after a drink order is taken.  Specifically, this function
@@ -51,11 +55,38 @@ class CoffeeBackend(Backend):
         '''
         for result in results:  # repeat the following actions for each result
             # !!! Fix the line below...
-            task = Task.construct_from_result(result,"Barista", "PrepareDrink") 
+            task = Task.construct_from_result(result,"desk", "enterID") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
-    def drink_prepared(self, results):
+    def checks_information(self, results):
+        '''
+        This method is called after the barista has prepared the drink.  
+        In our very simple workflow this is the last step in the process, 
+        which means that this method has a very simple job:  it just needs to mark 
+        the status of the barista's task (stored in the results variable) as Complete.  
+        '''
+        #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
+        #as insipiration...
+        for result in results:  # repeat the following actions for each result
+            self.workflow.update_status(result, Status.COMPLETE)
+            task = Task.construct_from_result(result,"checker", "checkID") 
+            self.workflow.add(task) # add the new task to the workflow
+            self.workflow.update_status(result, Status.COMPLETE)
+
+    def frisk_body(self, results):
+        '''
+        This method is called after the barista has prepared the drink.  
+        In our very simple workflow this is the last step in the process, 
+        which means that this method has a very simple job:  it just needs to mark 
+        the status of the barista's task (stored in the results variable) as Complete.  
+        '''
+        #!!! Replace this pass, with appropriate code (using the drink_order_taken) method
+        #as insipiration...
+        for result in results:  # repeat the following actions for each result
+            self.workflow.update_status(result, Status.COMPLETE)
+
+    def return_tix(self, results):
         '''
         This method is called after the barista has prepared the drink.  
         In our very simple workflow this is the last step in the process, 
@@ -73,4 +104,4 @@ It initialize the backend by running the __init__ method
 of the CoffeeBackend class (above), among other things.
 '''
 if __name__ == '__main__':
-    backend = CoffeeBackend()
+    backend = AirportBackend()
