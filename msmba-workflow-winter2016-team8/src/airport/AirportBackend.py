@@ -15,13 +15,10 @@ from airport.AirportConstants import theflowname
 class AirportBackend(Backend):
     '''
     The AirportBackend "class" is a collection of the "methods" (functions) that do the actual
-    wiring together of the steps in the coffee bar process.
+    wiring together of the steps in the process.
     
     A back end will always include the methods __init__ and wire and will also include a method
-    to handle each event that occurs in the process.  For Lab 5 we have set up the two additional
-    methods you need:  drink_order_taken and drink_prepared.
-    
-    See instruction documentation to see what you need to do.
+    to handle each event that occurs in the process.
     '''
    
     def __init__(self): 
@@ -47,14 +44,8 @@ class AirportBackend(Backend):
 
 
     def enter_information(self, results):
-        '''
-        This method (i.e. function) gets called to update data and schedule any tasks
-        necessary after a drink order is taken.  Specifically, this function
-        will set the status to "complete" on the "take drink order" task
-        and assigns the preparation of this drink to the Barista.
-        '''
+
         for result in results:  # repeat the following actions for each result
-            # !!! Fix the line below...
             task = Task.construct_from_result(result,"checker", "checkID") 
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
@@ -84,9 +75,7 @@ class AirportBackend(Backend):
             self.workflow.update_status(result, Status.COMPLETE)
 
 '''
-Finally, this last bit of code is fine as it is and you do not need to change it.
-It initialize the backend by running the __init__ method
-of the CoffeeBackend class (above), among other things.
+Finally, this last bit of code is fine as it is and you do not need to change it, Stephanie.
 '''
 if __name__ == '__main__':
     backend = AirportBackend()
