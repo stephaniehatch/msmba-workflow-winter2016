@@ -15,7 +15,7 @@ from frontend.roleApplication import RoleApplication
 from frontend.form import Type
 from airport.AirportConstants import theflowname
 
-class CustomerApplication(RoleApplication):
+class OrderTakerApplication(RoleApplication):
     '''
     The OrderTakerApplication "class" is a collection of the "methods" (functions) that 
     define the elements of the order taker application.  
@@ -30,12 +30,12 @@ class CustomerApplication(RoleApplication):
         '''
         # Declare this application to be part of a given workflow, and responsible for a given role:
         # !!! Modify the following to use the actual role name you need...
-        super(CustomerApplication, self).__init__(theflowname, "desk") 
+        super(OrderTakerApplication, self).__init__(theflowname, "OrderTaker") 
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual name for this task...
-        self.register_source_step("enterID", self.enter_information) 
+        self.register_source_step("TakeOrder", self.take_drink_order_form_creator) 
 
-    def enter_information(self, stepname, form):
+    def take_drink_order_form_creator(self, stepname, form):
         '''
         This method does the actual work of building the user interface.
         '''
@@ -45,10 +45,11 @@ class CustomerApplication(RoleApplication):
         form.add_field(Type.SHORTSTRING, "Date of Birth ")
         form.add_field(Type.SHORTSTRING, "ID Number ")
         form.add_field(Type.SHORTSTRING, "Flight Number")
+        form.add_field(Type.CHOICE, "Flight Treatment", choices=['Was rude at desk, deny them treats','Smiled during checkin, give first-class bathroom privileges',]
         # !!! Add at least two fields here, along with any additional static labels you need...
 
 if __name__ == '__main__':
     #starts up the OrderTakerApplication:
-    app = CustomerApplication()
+    app = OrderTakerApplication()
     #Start interacting with the user:
     app.MainLoop()
