@@ -33,7 +33,7 @@ class TSAApplication(RoleApplication):
         super(TSAApplication, self).__init__(theflowname, "TSA") 
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual name for this task...
-        self.register_source_step("frisk", self.frisk_customer_frantically) 
+        self.register_sink_step("frisk", self.frisk_customer_frantically, name_fields=["sequence", "Name"]) 
 
     def frisk_customer_frantically(self, stepname, form):
         '''
