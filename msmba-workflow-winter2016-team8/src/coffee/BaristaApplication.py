@@ -31,7 +31,7 @@ class BaristaApplication(RoleApplication):
         
         # Declare any tasks that this role is able to perform:
         # !!! Modify to use actual task name and name_fields:
-        self.register_sink_step("PrepareDrink", self.prepare_drink_form_creator, name_fields=["sequence", "Drank"])
+        self.register_sink_step("PrepareDrink", self.prepare_drink_form_creator, name_fields=["sequence", "Drank", "SpecialRequest"])
 
 
     def prepare_drink_form_creator(self, stepname, form):
@@ -40,7 +40,7 @@ class BaristaApplication(RoleApplication):
         This form appears once the barista selects one of the pending orders from a list.
         '''
         # !!! Use one or more fields from order to define label...
-        form.add_task_label(fields=["Drank","Name"]) 
+        form.add_task_label(fields=["Name"]) 
         # !!! Add any static labels or fields you want to include in this form...
 
 if __name__ == '__main__':
