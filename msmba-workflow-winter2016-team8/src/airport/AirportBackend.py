@@ -41,7 +41,7 @@ class AirportBackend(Backend):
         '''
         self.register_result_listener("desk", "enterID", self.enter_information)
         self.register_result_listener("checker", "checkID", self.checks_information)
-        self.register_result_listener("TSA", "frisk", self.frisk_body)
+        self.register_result_listener("TSA", "frisk", self.frisk_customer_frantically)
         self.register_result_listener("printer", "givetix", self.return_tix)
 
 
@@ -74,7 +74,7 @@ class AirportBackend(Backend):
             self.workflow.add(task) # add the new task to the workflow
             self.workflow.update_status(result, Status.COMPLETE)
 
-    def frisk_body(self, results):
+    def frisk_customer_frantically(self, results):
         '''
         This method is called after the barista has prepared the drink.  
         In our very simple workflow this is the last step in the process, 
